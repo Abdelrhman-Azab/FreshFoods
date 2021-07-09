@@ -9,3 +9,9 @@ TextStyle bold18 =
 
 TextStyle bold20 =
     TextStyle(color: onBoardColor, fontSize: 20, fontWeight: FontWeight.bold);
+
+TextStyle bold22 =
+    TextStyle(color: onBoardColor, fontSize: 22, fontWeight: FontWeight.bold);
+
+TextStyle bold30 =
+    TextStyle(color: onBoardColor, fontSize: 30, fontWeight: FontWeight.bold);

@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_food/screens/home_screen.dart';
+import 'package:fresh_food/screens/introduction/cubit/cubit.dart';
 import 'package:fresh_food/shared/components/components.dart';
 import 'package:fresh_food/style/myText.dart';
 import 'package:fresh_food/style/my_colors.dart';
 
-class OnBoardingScreen extends StatefulWidget {
-  static const String id = "onboarding";
+class IntroductionScreen extends StatefulWidget {
+  static const String id = "introduction";
 
   @override
-  _OnBoardingScreenState createState() => _OnBoardingScreenState();
+  _IntroductionScreenState createState() => _IntroductionScreenState();
 }
 
-class _OnBoardingScreenState extends State<OnBoardingScreen> {
+class _IntroductionScreenState extends State<IntroductionScreen> {
   PageController _pageViewController = PageController();
 
   int pageNumber = 0;
@@ -203,7 +205,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: defaultElevatedButton(
-                      buttonText: 'Get Started', onPressed: () {}),
+                      buttonText: 'Get Started',
+                      onPressed: () {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            HomeScreen.id, (route) => false);
+                      }),
                 )
               : GestureDetector(
                   onTap: () {

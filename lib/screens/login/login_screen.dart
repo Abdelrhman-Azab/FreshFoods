@@ -1,21 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fresh_food/screens/login/cubit/cubit.dart';
+import 'package:fresh_food/screens/login/cubit/states.dart';
+import 'package:fresh_food/screens/signup/cubit/states.dart';
 import 'package:fresh_food/screens/signup/signup_screen.dart';
+import 'package:fresh_food/screens/tab_bar/tab_bar_screen.dart';
 import 'package:fresh_food/shared/components/components.dart';
 import 'package:fresh_food/style/my_colors.dart';
 
 class LoginScreen extends StatelessWidget {
   static const id = "login";
-  const LoginScreen({Key? key}) : super(key: key);
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: Container(
+        body: BlocConsumer<LoginCubit, LoginStates>(
+      listener: (context, state) {
+        if (state is LoginStateLoading) {
+          loading = true;
+        }
+        if (state is LoginStateFailed) {
+          loading = false;
+        }
+        if (state is LoginStateSuccess) {
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil(TabBarScreen.id, (route) => false);
+        }
+      },
+      builder: (context, state) => SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: size.height * 0.88,
               padding: const EdgeInsets.symmetric(horizontal: 30),
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -43,11 +64,16 @@ class LoginScreen extends StatelessWidget {
                     height: size.height * 0.1,
                   ),
                   defaultTextForm(
-                      imagePath: "images/icon-user.png", hintText: "Email"),
+                      controller: emailController,
+                      imagePath: "images/icon-user.png",
+                      keyboard: TextInputType.emailAddress,
+                      hintText: "Email"),
                   SizedBox(
                     height: 12,
                   ),
                   defaultTextForm(
+                      controller: passwordController,
+                      password: true,
                       imagePath: "images/icon-padlock.png",
                       hintText: "Password"),
                   SizedBox(
@@ -63,35 +89,56 @@ class LoginScreen extends StatelessWidget {
                   Expanded(
                     child: SizedBox(),
                   ),
-                  defaultElevatedButton(
-                      buttonText: "SIGN IN", onPressed: () {}),
+                  loading
+                      ? CircularProgressIndicator()
+                      : defaultElevatedButton(
+                          buttonText: "SIGN IN",
+                          onPressed: () {
+                            if (!emailController.text.contains("@")) {
+                              showToast(
+                                  context: context,
+                                  message:
+                                      "Please enter a valid email address");
+                              return;
+                            }
+                            if (passwordController.text.length < 6) {
+                              showToast(
+                                  context: context,
+                                  message: "Please enter a valid password");
+                              return;
+                            }
+                            LoginCubit.get(context).login(
+                                context: context,
+                                email: emailController.text,
+                                password: passwordController.text);
+                          }),
                   SizedBox(
                     height: size.height * 0.05,
                   ),
                 ],
               ),
             ),
-          ),
-          SizedBox(
-            height: size.height * 0.04,
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(createRoute(SignUpScreen()));
-            },
-            child: Text(
-              "CREATE ACCOUNT",
-              style: TextStyle(
-                  color: baseFormTextColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
+            SizedBox(
+              height: size.height * 0.04,
             ),
-          ),
-          SizedBox(
-            height: size.height * 0.04,
-          ),
-        ],
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(createRoute(SignUpScreen()));
+              },
+              child: Text(
+                "CREATE ACCOUNT",
+                style: TextStyle(
+                    color: baseFormTextColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(
+              height: size.height * 0.04,
+            ),
+          ],
+        ),
       ),
-    );
+    ));
   }
 }

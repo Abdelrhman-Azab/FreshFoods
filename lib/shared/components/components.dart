@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_food/style/myText.dart';
 import 'package:fresh_food/style/my_colors.dart';
 
 Widget defaultElevatedButton(
@@ -30,7 +31,12 @@ Widget defaultElevatedButton(
           )),
     );
 
-Widget defaultTextForm({required String imagePath, required String hintText}) =>
+Widget defaultTextForm(
+        {required String imagePath,
+        TextInputType keyboard = TextInputType.name,
+        required String hintText,
+        bool password = false,
+        required TextEditingController controller}) =>
     Container(
         height: 60,
         decoration: BoxDecoration(
@@ -47,6 +53,9 @@ Widget defaultTextForm({required String imagePath, required String hintText}) =>
             ),
             Expanded(
               child: TextField(
+                obscureText: password,
+                controller: controller,
+                keyboardType: keyboard,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: hintText,
@@ -126,3 +135,38 @@ Widget myElevatedButton(
         )),
       ),
     );
+
+Widget settingsContainers(
+        {required String text, required IconData icon, required onTap}) =>
+    GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        decoration: BoxDecoration(color: baseFormFillColor),
+        width: double.infinity,
+        height: 60,
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: Colors.green,
+            ),
+            SizedBox(width: 20),
+            Expanded(
+              child: Text(
+                text,
+                style: bold16,
+              ),
+            ),
+            Icon(
+              Icons.arrow_forward_ios_outlined,
+              color: baseFormTextColor,
+            )
+          ],
+        ),
+      ),
+    );
+
+showToast({required BuildContext context, required String message}) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+}
