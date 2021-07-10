@@ -36,11 +36,13 @@ Widget defaultTextForm(
         TextInputType keyboard = TextInputType.name,
         required String hintText,
         bool password = false,
+        required BuildContext context,
         required TextEditingController controller}) =>
     Container(
         height: 60,
         decoration: BoxDecoration(
-            color: baseFormFillColor, borderRadius: BorderRadius.circular(6)),
+            color: Theme.of(context).primaryColor,
+            borderRadius: BorderRadius.circular(6)),
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Row(
           children: [
@@ -137,12 +139,17 @@ Widget myElevatedButton(
     );
 
 Widget settingsContainers(
-        {required String text, required IconData icon, required onTap}) =>
+        {required String text,
+        required IconData icon,
+        required onTap,
+        required BuildContext context}) =>
     GestureDetector(
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        decoration: BoxDecoration(color: baseFormFillColor),
+        decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+        ),
         width: double.infinity,
         height: 60,
         child: Row(
@@ -160,7 +167,7 @@ Widget settingsContainers(
             ),
             Icon(
               Icons.arrow_forward_ios_outlined,
-              color: baseFormTextColor,
+              color: Theme.of(context).primaryColor,
             )
           ],
         ),

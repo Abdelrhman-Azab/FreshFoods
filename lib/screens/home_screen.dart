@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.black12,
                         offset: Offset(0.7, 0.7))
                   ],
-                  color: Colors.white,
+                  color: Theme.of(context).accentColor,
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30))),

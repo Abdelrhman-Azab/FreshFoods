@@ -39,7 +39,7 @@ class LoginScreen extends StatelessWidget {
               height: size.height * 0.88,
               padding: const EdgeInsets.symmetric(horizontal: 30),
               decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).accentColor,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(30),
                     bottomRight: Radius.circular(30),
@@ -64,6 +64,7 @@ class LoginScreen extends StatelessWidget {
                     height: size.height * 0.1,
                   ),
                   defaultTextForm(
+                      context: context,
                       controller: emailController,
                       imagePath: "images/icon-user.png",
                       keyboard: TextInputType.emailAddress,
@@ -72,6 +73,7 @@ class LoginScreen extends StatelessWidget {
                     height: 12,
                   ),
                   defaultTextForm(
+                      context: context,
                       controller: passwordController,
                       password: true,
                       imagePath: "images/icon-padlock.png",

@@ -25,11 +25,11 @@ class _TabBarScreenState extends State<TabBarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      //backgroundColor: Colors.grey[50],
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         elevation: 0,
-        color: Colors.grey[50],
+        color: Theme.of(context).scaffoldBackgroundColor,
         child: Padding(
           padding: EdgeInsets.only(bottom: 10, left: 50, right: 50),
           child: Row(
@@ -54,7 +54,10 @@ class _TabBarScreenState extends State<TabBarScreen> {
               FloatingActionButton(
                 onPressed: () {},
                 backgroundColor: Color(0xff748A9D),
-                child: Icon(Icons.add),
+                child: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ),
               ),
               GestureDetector(
                 onTap: () {

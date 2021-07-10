@@ -41,7 +41,7 @@ class SignUpScreen extends StatelessWidget {
                 height: size.height * 0.88,
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).accentColor,
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30),
@@ -76,6 +76,7 @@ class SignUpScreen extends StatelessWidget {
                       height: size.height * 0.1,
                     ),
                     defaultTextForm(
+                        context: context,
                         controller: nameController,
                         imagePath: "images/icon-user.png",
                         hintText: "Full Name"),
@@ -83,6 +84,7 @@ class SignUpScreen extends StatelessWidget {
                       height: 12,
                     ),
                     defaultTextForm(
+                        context: context,
                         controller: emailController,
                         keyboard: TextInputType.emailAddress,
                         imagePath: "images/icon-user.png",
@@ -91,6 +93,7 @@ class SignUpScreen extends StatelessWidget {
                       height: 12,
                     ),
                     defaultTextForm(
+                        context: context,
                         controller: passwordController,
                         password: true,
                         imagePath: "images/icon-padlock.png",
