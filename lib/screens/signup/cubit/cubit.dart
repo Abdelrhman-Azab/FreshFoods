@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fresh_food/models/user_informations.dart';
 import 'package:fresh_food/screens/signup/cubit/states.dart';
 import 'package:fresh_food/shared/components/components.dart';
+import 'package:fresh_food/shared/network/local/preferences_service.dart';
 
 class RegisterCubit extends Cubit<RegisterStates> {
   RegisterCubit() : super(RegisterStateInitial());
@@ -24,11 +25,14 @@ class RegisterCubit extends Cubit<RegisterStates> {
 
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) {
-        UserInformations user =
-            UserInformations(email: email, name: name, id: value.user!.uid);
-        saveUserInformations(user);
-        emit(RegisterStateSuccess());
+          .then((value) async {
+        user = UserInformations(email: email, name: name, id: value.user!.uid);
+        saveUserInformations(user).then((value) {
+          CacheHelper().saveUID(uid: user.id);
+          emit(RegisterStateSuccess());
+        }).onError((error, stackTrace) {
+          print(error.toString());
+        });
       });
     } on FirebaseAuthException catch (e) {
       emit(RegisterStateFailed());
@@ -48,10 +52,10 @@ class RegisterCubit extends Cubit<RegisterStates> {
     }
   }
 
-  saveUserInformations(UserInformations user) {
-    FirebaseFirestore.instance
+  Future<void> saveUserInformations(UserInformations user) async {
+    return await FirebaseFirestore.instance
         .collection("users")
         .doc(user.id)
-        .set({"email": user.email, "name": user.name, "id": user.id});
+        .set(user.toMap());
   }
 }

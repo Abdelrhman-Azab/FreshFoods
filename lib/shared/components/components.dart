@@ -174,6 +174,24 @@ Widget settingsContainers(
       ),
     );
 
+Widget recipesTabContainer(
+        {required Size size, required String text, required Color color}) =>
+    GestureDetector(
+      onTap: () {},
+      child: Container(
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(color: color, fontSize: 16),
+          ),
+        ),
+        decoration: BoxDecoration(
+            color: greenColor, borderRadius: BorderRadius.circular(20)),
+        height: 50,
+        width: size.width * 0.2,
+      ),
+    );
+
 showToast({required BuildContext context, required String message}) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
 }

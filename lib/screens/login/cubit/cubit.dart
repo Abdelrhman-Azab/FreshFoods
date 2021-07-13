@@ -2,8 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fresh_food/models/user_informations.dart';
 import 'package:fresh_food/screens/login/cubit/states.dart';
 import 'package:fresh_food/shared/components/components.dart';
+import 'package:fresh_food/shared/network/local/preferences_service.dart';
 
 class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(LoginStateInitial());
@@ -19,6 +21,7 @@ class LoginCubit extends Cubit<LoginStates> {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password)
           .then((value) {
+        CacheHelper().saveUID(uid: value.user!.uid);
         emit(LoginStateSuccess());
       });
     } on FirebaseAuthException catch (e) {
