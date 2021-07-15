@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fresh_food/screens/meal_details/cubit/cubit.dart';
 import 'package:fresh_food/screens/meal_details/cubit/states.dart';
+import 'package:fresh_food/shared/components/components.dart';
 import 'package:fresh_food/style/myText.dart';
 import 'package:fresh_food/style/my_colors.dart';
 
@@ -12,6 +13,7 @@ class MealDetailsScreen extends StatelessWidget {
     final arguments = ModalRoute.of(context)!.settings.arguments as List;
     String mealId = arguments[0];
     String mealName = arguments[1];
+    Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
@@ -56,6 +58,64 @@ class MealDetailsScreen extends StatelessWidget {
                             height: 20,
                           ),
                           Text(
+                            "Ingredians",
+                            style: TextStyle(
+                                color: greenColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          ingredientRow(
+                              text1: MealDetailsCubit.get(context)
+                                  .mealDetails
+                                  .strIngredient1,
+                              size: size,
+                              text2: MealDetailsCubit.get(context)
+                                  .mealDetails
+                                  .strIngredient2),
+                          ingredientRow(
+                              size: size,
+                              text1: MealDetailsCubit.get(context)
+                                  .mealDetails
+                                  .strIngredient3,
+                              text2: MealDetailsCubit.get(context)
+                                  .mealDetails
+                                  .strIngredient4),
+                          ingredientRow(
+                              size: size,
+                              text1: MealDetailsCubit.get(context)
+                                  .mealDetails
+                                  .strIngredient5,
+                              text2: MealDetailsCubit.get(context)
+                                  .mealDetails
+                                  .strIngredient6),
+                          ingredientRow(
+                              size: size,
+                              text1: MealDetailsCubit.get(context)
+                                  .mealDetails
+                                  .strIngredient7,
+                              text2: MealDetailsCubit.get(context)
+                                  .mealDetails
+                                  .strIngredient8),
+                          MealDetailsCubit.get(context)
+                                      .mealDetails
+                                      .strIngredient9 ==
+                                  ""
+                              ? Container()
+                              : ingredientRow(
+                                  size: size,
+                                  text1: MealDetailsCubit.get(context)
+                                      .mealDetails
+                                      .strIngredient9,
+                                  text2: MealDetailsCubit.get(context)
+                                      .mealDetails
+                                      .strIngredient10),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
                             "Instructions",
                             style: TextStyle(
                                 color: greenColor,
@@ -69,7 +129,8 @@ class MealDetailsScreen extends StatelessWidget {
                             MealDetailsCubit.get(context)
                                 .mealDetails
                                 .strInstructions,
-                            style: TextStyle(color: baseFormFillDarkColor),
+                            style: TextStyle(
+                                color: baseFormFillDarkColor, height: 1.8),
                           ),
                         ],
                       ),

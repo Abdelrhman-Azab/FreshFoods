@@ -192,6 +192,32 @@ Widget recipesTabContainer(
       ),
     );
 
+Widget ingredientRow(
+        {required String text1, required String text2, required Size size}) =>
+    Padding(
+      padding: EdgeInsets.all(10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            width: size.width * 0.4,
+            child: Text(
+              text1,
+              style: bold16,
+            ),
+          ),
+          Spacer(),
+          Container(
+            width: size.width * 0.4,
+            child: Text(
+              text2,
+              style: bold16,
+            ),
+          )
+        ],
+      ),
+    );
+
 showToast({required BuildContext context, required String message}) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
 }
