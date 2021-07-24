@@ -3,6 +3,7 @@ import 'package:fresh_food/screens/cart/cart_screen.dart';
 import 'package:fresh_food/screens/home_screen.dart';
 import 'package:fresh_food/screens/recipes/recipes_screen.dart';
 import 'package:fresh_food/screens/settings/settings_screen.dart';
+import 'package:fresh_food/screens/shop/shop_screen.dart';
 
 class TabBarScreen extends StatefulWidget {
   static const String id = "tab";
@@ -51,11 +52,17 @@ class _TabBarScreenState extends State<TabBarScreen> {
                         _selectedIndex == 1 ? selectedColor : unselectedColor),
               ),
               FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(ShopScreen.id);
+                },
                 backgroundColor: Color(0xff748A9D),
-                child: Icon(
-                  Icons.add,
-                  color: Colors.white,
+                // child: Icon(
+                //   Icons.add,
+                //   color: Colors.white,
+                // ),
+                child: Text(
+                  "SHOP",
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
               GestureDetector(

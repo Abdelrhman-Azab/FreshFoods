@@ -17,6 +17,7 @@ class MealDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           mealName,
           overflow: TextOverflow.ellipsis,
@@ -30,7 +31,7 @@ class MealDetailsScreen extends StatelessWidget {
             listener: (context, state) {},
             builder: (context, state) => state is MealDetailsStateLoading
                 ? Center(
-                    child: SingleChildScrollView(),
+                    child: CircularProgressIndicator(),
                   )
                 : BlocProvider(
                     create: (context) => MealDetailsCubit(),
@@ -59,10 +60,7 @@ class MealDetailsScreen extends StatelessWidget {
                           ),
                           Text(
                             "Ingredians",
-                            style: TextStyle(
-                                color: greenColor,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
+                            style: boldGreen20,
                           ),
                           SizedBox(
                             height: 10,

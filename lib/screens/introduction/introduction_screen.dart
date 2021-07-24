@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_food/screens/home_screen.dart';
-import 'package:fresh_food/screens/introduction/cubit/cubit.dart';
+import 'package:fresh_food/screens/tab_bar/tab_bar_screen.dart';
 import 'package:fresh_food/shared/components/components.dart';
-import 'package:fresh_food/style/myText.dart';
 import 'package:fresh_food/style/my_colors.dart';
 
 class IntroductionScreen extends StatefulWidget {
@@ -62,98 +60,98 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                               textSize: 18,
                               text:
                                   "With one click you can add every ingredient for a recipe to your cart"),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 35),
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: size.height * 0.1,
-                                ),
-                                Text(
-                                  "Recipe Preferences",
-                                  style: TextStyle(
-                                      color: onBoardColor,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Expanded(child: SizedBox()),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("All", style: bold16),
-                                    Switch(
-                                        value: true,
-                                        activeColor: Colors.green,
-                                        onChanged: (mybool) {})
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Vegan", style: bold16),
-                                    Switch(
-                                        value: true,
-                                        activeColor: Colors.green,
-                                        onChanged: (mybool) {})
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Vegetarian", style: bold16),
-                                    Switch(
-                                        value: true,
-                                        activeColor: Colors.green,
-                                        onChanged: (mybool) {})
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Paleo", style: bold16),
-                                    Switch(
-                                        value: true,
-                                        activeColor: Colors.green,
-                                        onChanged: (mybool) {})
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Keto", style: bold16),
-                                    Switch(
-                                        value: true,
-                                        activeColor: Colors.green,
-                                        onChanged: (mybool) {})
-                                  ],
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Low Carb", style: bold16),
-                                    Switch(
-                                        value: true,
-                                        activeColor: Colors.green,
-                                        onChanged: (mybool) {})
-                                  ],
-                                ),
-                                Expanded(child: SizedBox()),
-                                Text(
-                                  "Tailor your recipes, feed exactly how you like it",
-                                  style: bold18,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                )
-                              ],
-                            ),
-                          )
+                          // Padding(
+                          //   padding: const EdgeInsets.symmetric(horizontal: 35),
+                          //   child: Column(
+                          //     children: [
+                          //       SizedBox(
+                          //         height: size.height * 0.1,
+                          //       ),
+                          //       Text(
+                          //         "Recipe Preferences",
+                          //         style: TextStyle(
+                          //             color: onBoardColor,
+                          //             fontSize: 20,
+                          //             fontWeight: FontWeight.bold),
+                          //       ),
+                          //       Expanded(child: SizedBox()),
+                          //       Row(
+                          //         mainAxisAlignment:
+                          //             MainAxisAlignment.spaceBetween,
+                          //         children: [
+                          //           Text("All", style: bold16),
+                          //           Switch(
+                          //               value: true,
+                          //               activeColor: Colors.green,
+                          //               onChanged: (mybool) {})
+                          //         ],
+                          //       ),
+                          //       Row(
+                          //         mainAxisAlignment:
+                          //             MainAxisAlignment.spaceBetween,
+                          //         children: [
+                          //           Text("Vegan", style: bold16),
+                          //           Switch(
+                          //               value: true,
+                          //               activeColor: Colors.green,
+                          //               onChanged: (mybool) {})
+                          //         ],
+                          //       ),
+                          //       Row(
+                          //         mainAxisAlignment:
+                          //             MainAxisAlignment.spaceBetween,
+                          //         children: [
+                          //           Text("Vegetarian", style: bold16),
+                          //           Switch(
+                          //               value: true,
+                          //               activeColor: Colors.green,
+                          //               onChanged: (mybool) {})
+                          //         ],
+                          //       ),
+                          //       Row(
+                          //         mainAxisAlignment:
+                          //             MainAxisAlignment.spaceBetween,
+                          //         children: [
+                          //           Text("Paleo", style: bold16),
+                          //           Switch(
+                          //               value: true,
+                          //               activeColor: Colors.green,
+                          //               onChanged: (mybool) {})
+                          //         ],
+                          //       ),
+                          //       Row(
+                          //         mainAxisAlignment:
+                          //             MainAxisAlignment.spaceBetween,
+                          //         children: [
+                          //           Text("Keto", style: bold16),
+                          //           Switch(
+                          //               value: true,
+                          //               activeColor: Colors.green,
+                          //               onChanged: (mybool) {})
+                          //         ],
+                          //       ),
+                          //       Row(
+                          //         mainAxisAlignment:
+                          //             MainAxisAlignment.spaceBetween,
+                          //         children: [
+                          //           Text("Low Carb", style: bold16),
+                          //           Switch(
+                          //               value: true,
+                          //               activeColor: Colors.green,
+                          //               onChanged: (mybool) {})
+                          //         ],
+                          //       ),
+                          //       Expanded(child: SizedBox()),
+                          //       Text(
+                          //         "Tailor your recipes, feed exactly how you like it",
+                          //         style: bold18,
+                          //       ),
+                          //       SizedBox(
+                          //         height: 20,
+                          //       )
+                          //     ],
+                          //   ),
+                          // )
                         ],
                       ),
                     ),
@@ -180,16 +178,16 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                                   : Colors.grey[300],
                               borderRadius: BorderRadius.circular(8)),
                         ),
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 8),
-                          height: 8,
-                          width: 8,
-                          decoration: BoxDecoration(
-                              color: pageNumber == 2
-                                  ? onBoardColor
-                                  : Colors.grey[300],
-                              borderRadius: BorderRadius.circular(8)),
-                        ),
+                        // Container(
+                        //   margin: EdgeInsets.symmetric(horizontal: 8),
+                        //   height: 8,
+                        //   width: 8,
+                        //   decoration: BoxDecoration(
+                        //       color: pageNumber == 2
+                        //           ? onBoardColor
+                        //           : Colors.grey[300],
+                        //       borderRadius: BorderRadius.circular(8)),
+                        // ),
                       ],
                     ),
                     SizedBox(
@@ -201,19 +199,20 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
           SizedBox(
             height: size.height * 0.04,
           ),
-          pageNumber == 2
+          pageNumber == 1
               ? Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: defaultElevatedButton(
                       buttonText: 'Get Started',
                       onPressed: () {
                         Navigator.of(context).pushNamedAndRemoveUntil(
-                            HomeScreen.id, (route) => false);
+                            TabBarScreen.id, (route) => false);
                       }),
                 )
               : GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pop();
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        TabBarScreen.id, (route) => false);
                   },
                   child: Text(
                     "SKIP",

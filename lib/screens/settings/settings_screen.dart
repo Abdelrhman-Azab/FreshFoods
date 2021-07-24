@@ -33,26 +33,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                          blurRadius: 10,
-                          color: Colors.black12,
-                          offset: Offset(0.7, 0.7))
-                    ],
-                    color: Theme.of(context).accentColor,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    )),
-                child: Center(
-                  child: Text(
-                    "Settings",
-                    style: bold20,
-                  ),
+            Container(
+              height: 100,
+              decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 10,
+                        color: Colors.black12,
+                        offset: Offset(0.7, 0.7))
+                  ],
+                  color: Theme.of(context).accentColor,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  )),
+              child: Center(
+                child: Text(
+                  "Settings",
+                  style: bold20,
                 ),
               ),
             ),

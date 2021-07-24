@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fresh_food/screens/introduction/introduction_screen.dart';
 import 'package:fresh_food/screens/signup/cubit/cubit.dart';
 import 'package:fresh_food/screens/signup/cubit/states.dart';
 import 'package:fresh_food/screens/tab_bar/tab_bar_screen.dart';
@@ -29,8 +30,8 @@ class SignUpScreen extends StatelessWidget {
             loading = false;
           }
           if (state is RegisterStateSuccess) {
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil(TabBarScreen.id, (route) => false);
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                IntroductionScreen.id, (route) => false);
           }
         },
         builder: (context, state) => SingleChildScrollView(

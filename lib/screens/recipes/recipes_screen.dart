@@ -6,35 +6,52 @@ import 'package:fresh_food/screens/recipes/cubit/cubit.dart';
 import 'package:fresh_food/screens/recipes/cubit/states.dart';
 import 'package:fresh_food/shared/components/components.dart';
 import 'package:fresh_food/style/myText.dart';
+import 'package:fresh_food/style/my_colors.dart';
 
-class RecipesScreen extends StatelessWidget {
+class RecipesScreen extends StatefulWidget {
+  @override
+  _RecipesScreenState createState() => _RecipesScreenState();
+}
+
+class _RecipesScreenState extends State<RecipesScreen> {
   final List<Meal> myMeals = [];
+
+  int _selectedIndex = 0;
+
+  changeindex(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
-      child: BlocConsumer<RecipesCubit, RecipesStates>(
-        listener: (context, state) {},
-        builder: (context, state) => state is RecipesStateVeganLoading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : Column(
-                children: [
-                  Container(
+      child: BlocProvider(
+        create: (BuildContext context) =>
+            RecipesCubit()..getRecipes("Vegetarian"),
+        child: BlocConsumer<RecipesCubit, RecipesStates>(
+          listener: (context, state) {},
+          builder: (context, state) => SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 10,
+                            color: Colors.black12,
+                            offset: Offset(0.7, 0.7)),
+                      ],
+                      color: Theme.of(context).accentColor,
+                      borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(20),
+                          bottomLeft: Radius.circular(20))),
+                  child: Container(
+                    height: 120,
                     width: double.infinity,
-                    height: 150,
-                    decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 10,
-                              color: Colors.black12,
-                              offset: Offset(0.7, 0.7)),
-                        ],
-                        color: Theme.of(context).accentColor,
-                        borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(20),
-                            bottomLeft: Radius.circular(20))),
                     child: Column(
                       children: [
                         Spacer(),
@@ -51,29 +68,71 @@ class RecipesScreen extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              recipesTabContainer(
-                                  size: size, text: "All", color: Colors.white),
+                              tabContainer(
+                                  onTap: () {
+                                    changeindex(0);
+                                    RecipesCubit.get(context)
+                                        .getRecipes("Vegetarian");
+                                  },
+                                  textcolor: _selectedIndex == 0
+                                      ? Colors.white
+                                      : baseFormFillDarkColor,
+                                  size: size,
+                                  text: "Vegetarian",
+                                  color: _selectedIndex == 0
+                                      ? greenColor
+                                      : Colors.white),
                               SizedBox(
                                 width: 10,
                               ),
-                              recipesTabContainer(
+                              tabContainer(
+                                  onTap: () {
+                                    changeindex(1);
+                                    RecipesCubit.get(context)
+                                        .getRecipes("Vegan");
+                                  },
                                   size: size,
+                                  textcolor: _selectedIndex == 1
+                                      ? Colors.white
+                                      : baseFormFillDarkColor,
                                   text: "Vegan",
-                                  color: Colors.white),
+                                  color: _selectedIndex == 1
+                                      ? greenColor
+                                      : Colors.white),
                               SizedBox(
                                 width: 10,
                               ),
-                              recipesTabContainer(
+                              tabContainer(
+                                  textcolor: _selectedIndex == 2
+                                      ? Colors.white
+                                      : baseFormFillDarkColor,
+                                  onTap: () {
+                                    changeindex(2);
+                                    RecipesCubit.get(context)
+                                        .getRecipes("Breakfast");
+                                  },
                                   size: size,
-                                  text: "Keto",
-                                  color: Colors.white),
+                                  text: "Breakfast",
+                                  color: _selectedIndex == 2
+                                      ? greenColor
+                                      : Colors.white),
                               SizedBox(
                                 width: 10,
                               ),
-                              recipesTabContainer(
+                              tabContainer(
+                                  onTap: () {
+                                    changeindex(3);
+                                    RecipesCubit.get(context)
+                                        .getRecipes("Pasta");
+                                  },
+                                  textcolor: _selectedIndex == 3
+                                      ? Colors.white
+                                      : baseFormFillDarkColor,
                                   size: size,
-                                  text: "Paleo",
-                                  color: Colors.white),
+                                  text: "Pasta",
+                                  color: _selectedIndex == 3
+                                      ? greenColor
+                                      : Colors.white),
                               SizedBox(
                                 height: 5,
                               )
@@ -83,77 +142,74 @@ class RecipesScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(30),
-                      child: ListView.separated(
-                          physics: BouncingScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                  color: Theme.of(context).primaryColor,
-                                  borderRadius: BorderRadius.circular(20)),
-                              height: 250,
-                              width: double.infinity,
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).pushNamed(
-                                      MealDetailsScreen.id,
-                                      arguments: [
+                ),
+                Container(
+                  padding: EdgeInsets.all(30),
+                  child: ListView.separated(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return Container(
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                              borderRadius: BorderRadius.circular(20)),
+                          height: 250,
+                          width: double.infinity,
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(MealDetailsScreen.id, arguments: [
+                                RecipesCubit.get(context).meals[index].idMeal,
+                                RecipesCubit.get(context).meals[index].strMeal
+                              ]);
+                            },
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: Container(
+                                    width: double.infinity,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(20),
+                                          topRight: Radius.circular(20)),
+                                      child: Image.network(
                                         RecipesCubit.get(context)
                                             .meals[index]
-                                            .idMeal,
-                                        RecipesCubit.get(context)
-                                            .meals[index]
-                                            .strMeal
-                                      ]);
-                                },
-                                child: Column(
-                                  children: [
-                                    Expanded(
-                                      child: Container(
-                                        width: double.infinity,
-                                        child: ClipRRect(
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(20),
-                                              topRight: Radius.circular(20)),
-                                          child: Image.network(
-                                            RecipesCubit.get(context)
-                                                .meals[index]
-                                                .strMealThumb,
-                                            fit: BoxFit.fill,
-                                          ),
-                                        ),
+                                            .strMealThumb,
+                                        fit: BoxFit.fill,
                                       ),
                                     ),
-                                    Container(
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 20, vertical: 10),
-                                      height: 50,
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            RecipesCubit.get(context)
-                                                .meals[index]
-                                                .strMeal,
-                                            style: bold16,
-                                          ),
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                          separatorBuilder: (context, index) => Divider(),
-                          itemCount: RecipesCubit.get(context).meals.length),
-                    ),
-                  )
-                ],
-              ),
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  height: 50,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        RecipesCubit.get(context)
+                                            .meals[index]
+                                            .strMeal,
+                                        style: bold16,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) => Divider(),
+                      itemCount: RecipesCubit.get(context).meals.length),
+                )
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

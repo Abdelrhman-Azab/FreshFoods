@@ -15,3 +15,6 @@ TextStyle bold22 =
 
 TextStyle bold30 =
     TextStyle(color: onBoardColor, fontSize: 30, fontWeight: FontWeight.bold);
+
+TextStyle boldGreen20 =
+    TextStyle(color: greenColor, fontSize: 20, fontWeight: FontWeight.bold);

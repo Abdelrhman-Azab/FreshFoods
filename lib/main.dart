@@ -3,22 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fresh_food/cubit/cubit.dart';
 import 'package:fresh_food/cubit/states.dart';
+import 'package:fresh_food/screens/cart/cubit/cubit.dart';
+import 'package:fresh_food/screens/delivery_options/delivery_address_screen.dart';
 import 'package:fresh_food/screens/home_screen.dart';
 import 'package:fresh_food/screens/introduction/cubit/cubit.dart';
 import 'package:fresh_food/screens/login/cubit/cubit.dart';
 import 'package:fresh_food/screens/login/login_screen.dart';
 import 'package:fresh_food/screens/introduction/introduction_screen.dart';
-import 'package:fresh_food/screens/meal_details/cubit/cubit.dart';
 import 'package:fresh_food/screens/meal_details/meal_details_screen.dart';
-import 'package:fresh_food/screens/recipes/cubit/cubit.dart';
+import 'package:fresh_food/screens/product/product_screen.dart';
 import 'package:fresh_food/screens/settings/cubit/cubit.dart';
+import 'package:fresh_food/screens/shop/cubit/cubit.dart';
+import 'package:fresh_food/screens/shop/shop_screen.dart';
 import 'package:fresh_food/screens/signup/cubit/cubit.dart';
 import 'package:fresh_food/screens/signup/signup_screen.dart';
 import 'package:fresh_food/screens/tab_bar/tab_bar_screen.dart';
 import 'package:fresh_food/shared/network/local/preferences_service.dart';
 import 'package:fresh_food/shared/network/remote/dio.dart';
 import 'package:fresh_food/style/my_colors.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'bloc/bloc_observer.dart';
 
 void main() async {
@@ -51,10 +53,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (BuildContext context) => IntroductionCubit()),
         BlocProvider(create: (BuildContext context) => RegisterCubit()),
         BlocProvider(create: (BuildContext context) => LoginCubit()),
-        // BlocProvider(create: (BuildContext context) => MealDetailsCubit()),
         BlocProvider(create: (BuildContext context) => SettingsCubit()),
+        BlocProvider(create: (BuildContext context) => CartCubit()),
         BlocProvider(
-            create: (BuildContext context) => RecipesCubit()..getVegan()),
+            create: (BuildContext context) => ShopCubit()..getProducts()),
         BlocProvider(
             create: (BuildContext context) =>
                 MainCubit()..changeTheme(fromShared: isDark)),
@@ -82,6 +84,8 @@ class MyApp extends StatelessWidget {
               HomeScreen.id: (context) => HomeScreen(),
               TabBarScreen.id: (context) => TabBarScreen(),
               MealDetailsScreen.id: (context) => MealDetailsScreen(),
+              ShopScreen.id: (context) => ShopScreen(),
+              ProductScreen.id: (context) => ProductScreen(),
             },
           );
         },

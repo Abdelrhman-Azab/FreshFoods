@@ -14,11 +14,12 @@ class RecipesCubit extends Cubit<RecipesStates> {
 
   List<Meal> meals = [];
 
-  getVegan() async {
+  getRecipes(String id) async {
     emit(RecipesStateVeganLoading());
+    meals.clear();
     await HttpHelper()
         .getData(
-            url: "https://www.themealdb.com/api/json/v1/1/filter.php?c=vegan")
+            url: "https://www.themealdb.com/api/json/v1/1/filter.php?c=$id")
         .then((value) {
       var jsonResponse = jsonDecode(value) as Map<String, dynamic>;
 
@@ -29,6 +30,7 @@ class RecipesCubit extends Cubit<RecipesStates> {
             strMeal: mealsJson[i]['strMeal'],
             strMealThumb: mealsJson[i]['strMealThumb'],
             idMeal: mealsJson[i]['idMeal']));
+        meals = List.from(meals.reversed);
       }
       emit(RecipesStateVeganSuccess());
     }).catchError((e) {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_food/style/myText.dart';
+import 'package:fresh_food/style/my_colors.dart';
 
 class HomeScreen extends StatefulWidget {
   static const id = "home";
@@ -17,9 +18,11 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         children: [
           Expanded(
-            flex: 6,
             child: Container(
               decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: AssetImage("images/cutten.jpg")),
                   boxShadow: [
                     BoxShadow(
                         blurRadius: 10,
@@ -31,112 +34,73 @@ class _HomeScreenState extends State<HomeScreen> {
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30))),
               padding: EdgeInsets.only(bottom: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 20,
-                  ),
-                  ListTile(
-                    title: Center(child: Text("data")),
-                    trailing:
-                        IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-                  ),
-                  Expanded(
-                    child: Container(
-                      child: Image.asset(
-                        "images/broccoli.png",
-                      ),
-                    ),
-                  ),
-                  Text(
-                    "Vegetables",
-                    style: bold30,
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  GestureDetector(
-                    child: Text(
-                      "Browse",
-                      style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
-              ),
             ),
           ),
-          Expanded(
-            flex: 3,
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              child: ListView(
-                physics: BouncingScrollPhysics(),
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
-                    decoration: BoxDecoration(
-                        color: Color(0xffDD4040),
-                        borderRadius: BorderRadius.circular(15)),
-                    margin: EdgeInsets.only(left: 20, right: 10),
-                    width: 150,
-                    child: Column(
-                      children: [
-                        Expanded(child: Image.asset("images/strawberry-1.png")),
-                        Text("Strawberry",
-                            style: TextStyle(color: Colors.white))
-                      ],
-                    ),
+          Container(
+            height: 150,
+            padding: EdgeInsets.only(top: 10),
+            child: ListView(
+              shrinkWrap: true,
+              physics: BouncingScrollPhysics(),
+              scrollDirection: Axis.horizontal,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
+                  decoration: BoxDecoration(
+                      color: Color(0xffDD4040),
+                      borderRadius: BorderRadius.circular(15)),
+                  margin: EdgeInsets.only(left: 10, right: 5),
+                  width: 165,
+                  child: Column(
+                    children: [
+                      Expanded(child: Image.asset("images/strawberry-1.png")),
+                      Text("Strawberry", style: TextStyle(color: Colors.white))
+                    ],
                   ),
-                  Container(
-                    padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
-                    decoration: BoxDecoration(
-                        color: Colors.yellow[600],
-                        borderRadius: BorderRadius.circular(15)),
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    width: 150,
-                    child: Column(
-                      children: [
-                        Expanded(child: Image.asset("images/banana-1.png")),
-                        Text("Banana", style: TextStyle(color: Colors.white))
-                      ],
-                    ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
+                  decoration: BoxDecoration(
+                      color: Colors.yellow[600],
+                      borderRadius: BorderRadius.circular(15)),
+                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  width: 165,
+                  child: Column(
+                    children: [
+                      Expanded(child: Image.asset("images/banana-1.png")),
+                      Text("Banana", style: TextStyle(color: Colors.white))
+                    ],
                   ),
-                  Container(
-                    padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
-                    decoration: BoxDecoration(
-                        color: Colors.orange[400],
-                        borderRadius: BorderRadius.circular(15)),
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    width: 150,
-                    child: Column(
-                      children: [
-                        Expanded(child: Image.asset("images/mango.png")),
-                        Text("Mango", style: TextStyle(color: Colors.white))
-                      ],
-                    ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
+                  decoration: BoxDecoration(
+                      color: Colors.orange[400],
+                      borderRadius: BorderRadius.circular(15)),
+                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  width: 165,
+                  child: Column(
+                    children: [
+                      Expanded(child: Image.asset("images/mango.png")),
+                      Text("Mango", style: TextStyle(color: Colors.white))
+                    ],
                   ),
-                  Container(
-                    padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
-                    decoration: BoxDecoration(
-                        color: Colors.black54,
-                        borderRadius: BorderRadius.circular(15)),
-                    margin: EdgeInsets.symmetric(horizontal: 10),
-                    width: 150,
-                    child: Column(
-                      children: [
-                        Expanded(child: Image.asset("images/blackberry.png")),
-                        Text("Blackberry",
-                            style: TextStyle(color: Colors.white))
-                      ],
-                    ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
+                  decoration: BoxDecoration(
+                      color: Colors.black54,
+                      borderRadius: BorderRadius.circular(15)),
+                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  width: 165,
+                  child: Column(
+                    children: [
+                      Expanded(child: Image.asset("images/blackberry.png")),
+                      Text("Blackberry", style: TextStyle(color: Colors.white))
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           SizedBox(

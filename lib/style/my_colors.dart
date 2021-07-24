@@ -8,3 +8,4 @@ Color lightGrey = Color(0xffA6B8C9);
 Color darkColor = Color(0xff404E5A);
 Color baseFormFillDarkColor = Color(0xff4E5D6A);
 Color greenColor = Color(0xff7BED8D);
+Color cartColor = Color(0xfff0f4f8);

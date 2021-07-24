@@ -5,6 +5,7 @@ import 'package:fresh_food/style/my_colors.dart';
 Widget defaultElevatedButton(
         {required String buttonText,
         required onPressed,
+        double textSize = 14,
         IconData iconData = Icons.arrow_forward}) =>
     Container(
       height: 60,
@@ -18,14 +19,15 @@ Widget defaultElevatedButton(
             children: [
               Icon(
                 iconData,
-                size: 14,
+                size: textSize,
               ),
               SizedBox(
                 width: 10,
               ),
               Text(
                 buttonText,
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                style:
+                    TextStyle(fontSize: textSize, fontWeight: FontWeight.bold),
               ),
             ],
           )),
@@ -133,7 +135,6 @@ Widget myElevatedButton(
         child: Center(
             child: Text(
           text,
-          style: TextStyle(fontFamily: "Bolt-Semibold"),
         )),
       ),
     );
@@ -174,20 +175,50 @@ Widget settingsContainers(
       ),
     );
 
-Widget recipesTabContainer(
-        {required Size size, required String text, required Color color}) =>
+Widget tabContainer(
+        {required Size size,
+        required String text,
+        required Color textcolor,
+        required Color color,
+        required Function()? onTap}) =>
     GestureDetector(
-      onTap: () {},
-      child: Container(
+      onTap: onTap,
+      child: AnimatedContainer(
+        curve: Curves.easeInOut,
+        duration: Duration(milliseconds: 400),
         child: Center(
           child: Text(
             text,
-            style: TextStyle(color: color, fontSize: 16),
+            style: TextStyle(color: textcolor, fontSize: 16),
           ),
         ),
         decoration: BoxDecoration(
-            color: greenColor, borderRadius: BorderRadius.circular(20)),
+            color: color, borderRadius: BorderRadius.circular(20)),
         height: 50,
+        width: size.width * 0.2,
+      ),
+    );
+
+Widget deliveryTabContainer(
+        {required Size size,
+        required String imagePath,
+        required Color containerColor,
+        required Color imageColor,
+        required Function()? onTap}) =>
+    GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        curve: Curves.easeInOut,
+        duration: Duration(milliseconds: 400),
+        child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+            child: Image.asset(
+              imagePath,
+              color: imageColor,
+            )),
+        decoration: BoxDecoration(
+            color: containerColor, borderRadius: BorderRadius.circular(20)),
+        height: 40,
         width: size.width * 0.2,
       ),
     );
@@ -215,6 +246,27 @@ Widget ingredientRow(
             ),
           )
         ],
+      ),
+    );
+
+deliveryTextForm(
+        {required String labelText,
+        TextInputType keyboardType = TextInputType.name,
+        required TextEditingController controller}) =>
+    Container(
+      color: baseFormFillColor,
+      child: TextFormField(
+        controller: controller,
+        keyboardType: keyboardType,
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          labelText: labelText,
+          labelStyle: TextStyle(color: onBoardColor),
+          enabledBorder:
+              OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+          focusedBorder:
+              OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+        ),
       ),
     );
 

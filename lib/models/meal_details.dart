@@ -1,5 +1,3 @@
-import 'package:fresh_food/models/meal_model.dart';
-
 class MealDetails {
   String idMeal;
   String strMeal;
