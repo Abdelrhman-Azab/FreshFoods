@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_food/cubit/cubit.dart';
 import 'package:fresh_food/models/product.dart';
 import 'package:fresh_food/shared/components/components.dart';
 import 'package:fresh_food/style/myText.dart';
@@ -13,7 +14,9 @@ class ProductScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: MainCubit.get(context).dark
+          ? Theme.of(context).primaryColor
+          : Colors.white,
       appBar: AppBar(
         title: Text(model.name ?? ""),
       ),
@@ -25,7 +28,9 @@ class ProductScreen extends StatelessWidget {
             children: [
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 60, vertical: 10),
-                color: Colors.white,
+                color: MainCubit.get(context).dark
+                    ? Theme.of(context).primaryColor
+                    : Colors.white,
                 height: 300,
                 width: double.infinity,
                 child: Image.network(
@@ -53,7 +58,7 @@ class ProductScreen extends StatelessWidget {
               ),
               Text(
                 model.description ?? "",
-                style: TextStyle(color: baseFormFillDarkColor, height: 1.8),
+                style: TextStyle(height: 1.8),
               ),
               SizedBox(
                 height: 20,

@@ -97,14 +97,14 @@ class LoginScreen extends StatelessWidget {
                           buttonText: "SIGN IN",
                           onPressed: () {
                             if (!emailController.text.contains("@")) {
-                              showToast(
+                              showSnackBar(
                                   context: context,
                                   message:
                                       "Please enter a valid email address");
                               return;
                             }
                             if (passwordController.text.length < 6) {
-                              showToast(
+                              showSnackBar(
                                   context: context,
                                   message: "Please enter a valid password");
                               return;

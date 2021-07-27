@@ -42,7 +42,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         color: Colors.black12,
                         offset: Offset(0.7, 0.7))
                   ],
-                  color: Theme.of(context).accentColor,
+                  color: MainCubit.get(context).dark
+                      ? Theme.of(context).primaryColor
+                      : Colors.white,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     bottomRight: Radius.circular(20),

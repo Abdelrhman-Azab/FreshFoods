@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fresh_food/cubit/cubit.dart';
 import 'package:fresh_food/screens/product/product_screen.dart';
 import 'package:fresh_food/screens/shop/cubit/cubit.dart';
 import 'package:fresh_food/screens/shop/cubit/states.dart';
@@ -27,7 +28,7 @@ class ShopScreen extends StatelessWidget {
                 )
               : Container(
                   padding: EdgeInsets.all(10),
-                  color: Colors.grey[100],
+                  //color: Colors.grey[100],
                   child: GridView.count(
                     mainAxisSpacing: 5,
                     crossAxisSpacing: 5,
@@ -43,7 +44,9 @@ class ShopScreen extends StatelessWidget {
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: Colors.white,
+                                    color: MainCubit.get(context).dark
+                                        ? Theme.of(context).primaryColor
+                                        : Colors.white,
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Column(
                                   children: [
@@ -70,7 +73,8 @@ class ShopScreen extends StatelessWidget {
                                         onPressed: () {
                                           ShopCubit.get(context).addToCart(
                                               ShopCubit.get(context)
-                                                  .products[index]);
+                                                  .products[index],
+                                              context);
                                           ShopCubit.get(context)
                                               .getCartTotalPrice();
                                         },

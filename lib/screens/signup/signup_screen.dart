@@ -108,20 +108,20 @@ class SignUpScreen extends StatelessWidget {
                             buttonText: "CREATE ACCOUNT",
                             onPressed: () {
                               if (!emailController.text.contains("@")) {
-                                showToast(
+                                showSnackBar(
                                     context: context,
                                     message:
                                         "Please enter a valid email address");
                                 return;
                               }
                               if (passwordController.text.length < 6) {
-                                showToast(
+                                showSnackBar(
                                     context: context,
                                     message: "Please enter a valid password");
                                 return;
                               }
                               if (nameController.text.length < 3) {
-                                showToast(
+                                showSnackBar(
                                     context: context,
                                     message: "Please enter your name");
                                 return;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fresh_food/cubit/cubit.dart';
 import 'package:fresh_food/models/meal_model.dart';
 import 'package:fresh_food/screens/meal_details/meal_details_screen.dart';
 import 'package:fresh_food/screens/recipes/cubit/cubit.dart';
@@ -45,7 +46,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
                             color: Colors.black12,
                             offset: Offset(0.7, 0.7)),
                       ],
-                      color: Theme.of(context).accentColor,
+                      color: MainCubit.get(context).dark
+                          ? Theme.of(context).primaryColor
+                          : Colors.white,
                       borderRadius: BorderRadius.only(
                           bottomRight: Radius.circular(20),
                           bottomLeft: Radius.circular(20))),
@@ -81,7 +84,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
                                   text: "Vegetarian",
                                   color: _selectedIndex == 0
                                       ? greenColor
-                                      : Colors.white),
+                                      : MainCubit.get(context).dark
+                                          ? Colors.grey[850]!
+                                          : Colors.white),
                               SizedBox(
                                 width: 10,
                               ),
@@ -98,7 +103,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
                                   text: "Vegan",
                                   color: _selectedIndex == 1
                                       ? greenColor
-                                      : Colors.white),
+                                      : MainCubit.get(context).dark
+                                          ? Colors.grey[850]!
+                                          : Colors.white),
                               SizedBox(
                                 width: 10,
                               ),
@@ -115,7 +122,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
                                   text: "Breakfast",
                                   color: _selectedIndex == 2
                                       ? greenColor
-                                      : Colors.white),
+                                      : MainCubit.get(context).dark
+                                          ? Colors.grey[850]!
+                                          : Colors.white),
                               SizedBox(
                                 width: 10,
                               ),
@@ -132,7 +141,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
                                   text: "Pasta",
                                   color: _selectedIndex == 3
                                       ? greenColor
-                                      : Colors.white),
+                                      : MainCubit.get(context).dark
+                                          ? Colors.grey[850]!
+                                          : Colors.white),
                               SizedBox(
                                 height: 5,
                               )

@@ -189,7 +189,7 @@ Widget tabContainer(
         child: Center(
           child: Text(
             text,
-            style: TextStyle(color: textcolor, fontSize: 16),
+            style: TextStyle(fontSize: 16, color: textcolor),
           ),
         ),
         decoration: BoxDecoration(
@@ -252,15 +252,18 @@ Widget ingredientRow(
 deliveryTextForm(
         {required String labelText,
         TextInputType keyboardType = TextInputType.name,
+        int maxLength = 99,
         required TextEditingController controller}) =>
     Container(
       color: baseFormFillColor,
       child: TextFormField(
+        maxLength: maxLength,
         controller: controller,
         keyboardType: keyboardType,
         decoration: InputDecoration(
           border: InputBorder.none,
           labelText: labelText,
+          counterText: "",
           labelStyle: TextStyle(color: onBoardColor),
           enabledBorder:
               OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
@@ -270,6 +273,11 @@ deliveryTextForm(
       ),
     );
 
-showToast({required BuildContext context, required String message}) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+showSnackBar({required BuildContext context, required String message}) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+        // backgroundColor: Colors.grey[900],
+        duration: Duration(milliseconds: 600),
+        content: Text(message)),
+  );
 }
