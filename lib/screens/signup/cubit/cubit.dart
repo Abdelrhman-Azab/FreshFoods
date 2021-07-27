@@ -30,6 +30,10 @@ class RegisterCubit extends Cubit<RegisterStates> {
         saveUserInformations(user).then((value) {
           CacheHelper().saveUID(uid: user.id);
           emit(RegisterStateSuccess());
+          FirebaseFirestore.instance
+              .collection("orders")
+              .doc(user.id)
+              .set({"orders": []});
         }).onError((error, stackTrace) {
           print(error.toString());
         });
