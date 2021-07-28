@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fresh_food/screens/delivery_address/cubit/states.dart';
+import 'package:fresh_food/screens/order/cubit/cubit.dart';
 import 'package:fresh_food/screens/shop/cubit/cubit.dart';
 import 'package:fresh_food/shared/components/components.dart';
 import 'package:fresh_food/shared/network/remote/firebase.dart';
@@ -18,6 +19,10 @@ class DeliveryCubit extends Cubit<DeliveryStates> {
   int selectedIndex = 0;
 
   String dropdownValue = 'Alexandria';
+
+  String deliverySpeed = "Standard";
+
+  String payment = "Cash On Delivery";
 
   List<String> cites = [
     'Alexandria',
@@ -71,11 +76,21 @@ class DeliveryCubit extends Cubit<DeliveryStates> {
 
   changeDeliveryIndex(int index) {
     selectedDeliveryIndex = index;
+    if (selectedDeliveryIndex == 0) {
+      deliverySpeed = "Standard";
+    } else {
+      deliverySpeed = "Fast";
+    }
     emit(DeliveryStateOptionView());
   }
 
   changePaymentIndex(int index) {
     selectedPaymentMethod = index;
+    if (selectedPaymentMethod == 0) {
+      payment = "Cash On Delivery";
+    } else {
+      payment = "Card";
+    }
     emit(DeliveryStatePaymentView());
   }
 
@@ -101,9 +116,9 @@ class DeliveryCubit extends Cubit<DeliveryStates> {
           "street": streetController.text,
           "moreInfos": moreInfoController.text,
           "phone": phoneController.text,
-          "deliverytype": "free",
+          "deliverytype": deliverySpeed,
           "email": user!.email,
-          "Payment": "CashOnDelivery",
+          "payment": payment,
           "totalPrice": ShopCubit.get(context).totalPrice,
           "date": DateTime.now(),
           "products": products,
@@ -115,6 +130,8 @@ class DeliveryCubit extends Cubit<DeliveryStates> {
           .doc(uid)
           .set({"cart": []}).then((value) {
         ShopCubit.get(context).cartItems.clear();
+        OrderCubit.get(context).getOrders();
+
         emit(DeliveryStateOrderSuccess());
       });
     }).onError((error, stackTrace) {

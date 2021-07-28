@@ -12,6 +12,8 @@ import 'package:fresh_food/screens/login/cubit/cubit.dart';
 import 'package:fresh_food/screens/login/login_screen.dart';
 import 'package:fresh_food/screens/introduction/introduction_screen.dart';
 import 'package:fresh_food/screens/meal_details/meal_details_screen.dart';
+import 'package:fresh_food/screens/order/cubit/cubit.dart';
+import 'package:fresh_food/screens/order/order_screen.dart';
 import 'package:fresh_food/screens/order/order_success_screen.dart';
 import 'package:fresh_food/screens/product/product_screen.dart';
 import 'package:fresh_food/screens/settings/cubit/cubit.dart';
@@ -58,6 +60,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (BuildContext context) => LoginCubit()),
         BlocProvider(create: (BuildContext context) => SettingsCubit()),
         BlocProvider(create: (BuildContext context) => DeliveryCubit()),
+        BlocProvider(
+            create: (BuildContext context) => OrderCubit()..getOrders()),
         BlocProvider(create: (BuildContext context) => CartCubit()),
         BlocProvider(
             create: (BuildContext context) => ShopCubit()..getProducts()),
@@ -93,6 +97,7 @@ class MyApp extends StatelessWidget {
               ShopScreen.id: (context) => ShopScreen(),
               ProductScreen.id: (context) => ProductScreen(),
               DeliveryAddress.id: (context) => DeliveryAddress(),
+              OrderScreen.id: (context) => OrderScreen(),
               OrderSuccessScreen.id: (context) => OrderSuccessScreen(),
             },
           );

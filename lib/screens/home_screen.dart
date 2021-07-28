@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_food/screens/product/product_screen.dart';
+import 'package:fresh_food/screens/shop/cubit/cubit.dart';
 import 'package:fresh_food/style/myText.dart';
 import 'package:fresh_food/style/my_colors.dart';
 
@@ -10,6 +12,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    if (ShopCubit.get(context).products.isEmpty) {
+      ShopCubit.get(context).getProducts();
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -44,60 +54,86 @@ class _HomeScreenState extends State<HomeScreen> {
               physics: BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               children: [
-                Container(
-                  padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
-                  decoration: BoxDecoration(
-                      color: Color(0xffDD4040),
-                      borderRadius: BorderRadius.circular(15)),
-                  margin: EdgeInsets.only(left: 10, right: 5),
-                  width: 165,
-                  child: Column(
-                    children: [
-                      Expanded(child: Image.asset("images/strawberry-1.png")),
-                      Text("Strawberry", style: TextStyle(color: Colors.white))
-                    ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(ProductScreen.id,
+                        arguments: ShopCubit.get(context).products[0]);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
+                    decoration: BoxDecoration(
+                        color: Color(0xffDD4040),
+                        borderRadius: BorderRadius.circular(15)),
+                    margin: EdgeInsets.only(left: 10, right: 5),
+                    width: 165,
+                    child: Column(
+                      children: [
+                        Expanded(child: Image.asset("images/strawberry-1.png")),
+                        Text("Strawberry",
+                            style: TextStyle(color: Colors.white))
+                      ],
+                    ),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
-                  decoration: BoxDecoration(
-                      color: Colors.yellow[600],
-                      borderRadius: BorderRadius.circular(15)),
-                  margin: EdgeInsets.symmetric(horizontal: 5),
-                  width: 165,
-                  child: Column(
-                    children: [
-                      Expanded(child: Image.asset("images/banana-1.png")),
-                      Text("Banana", style: TextStyle(color: Colors.white))
-                    ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(ProductScreen.id,
+                        arguments: ShopCubit.get(context).products[6]);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
+                    decoration: BoxDecoration(
+                        color: Colors.yellow[600],
+                        borderRadius: BorderRadius.circular(15)),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    width: 165,
+                    child: Column(
+                      children: [
+                        Expanded(child: Image.asset("images/banana-1.png")),
+                        Text("Banana", style: TextStyle(color: Colors.white))
+                      ],
+                    ),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
-                  decoration: BoxDecoration(
-                      color: Colors.orange[400],
-                      borderRadius: BorderRadius.circular(15)),
-                  margin: EdgeInsets.symmetric(horizontal: 5),
-                  width: 165,
-                  child: Column(
-                    children: [
-                      Expanded(child: Image.asset("images/mango.png")),
-                      Text("Mango", style: TextStyle(color: Colors.white))
-                    ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(ProductScreen.id,
+                        arguments: ShopCubit.get(context).products[5]);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
+                    decoration: BoxDecoration(
+                        color: Colors.orange[400],
+                        borderRadius: BorderRadius.circular(15)),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    width: 165,
+                    child: Column(
+                      children: [
+                        Expanded(child: Image.asset("images/mango.png")),
+                        Text("Mango", style: TextStyle(color: Colors.white))
+                      ],
+                    ),
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
-                  decoration: BoxDecoration(
-                      color: Colors.black54,
-                      borderRadius: BorderRadius.circular(15)),
-                  margin: EdgeInsets.symmetric(horizontal: 5),
-                  width: 165,
-                  child: Column(
-                    children: [
-                      Expanded(child: Image.asset("images/blackberry.png")),
-                      Text("Blackberry", style: TextStyle(color: Colors.white))
-                    ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(ProductScreen.id,
+                        arguments: ShopCubit.get(context).products[1]);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.only(bottom: 15, left: 15, right: 15),
+                    decoration: BoxDecoration(
+                        color: Colors.black54,
+                        borderRadius: BorderRadius.circular(15)),
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    width: 165,
+                    child: Column(
+                      children: [
+                        Expanded(child: Image.asset("images/blackberry.png")),
+                        Text("Blackberry",
+                            style: TextStyle(color: Colors.white))
+                      ],
+                    ),
                   ),
                 ),
               ],

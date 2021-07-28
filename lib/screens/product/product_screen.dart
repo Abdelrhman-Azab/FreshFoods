@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_food/cubit/cubit.dart';
 import 'package:fresh_food/models/product.dart';
+import 'package:fresh_food/screens/shop/cubit/cubit.dart';
 import 'package:fresh_food/shared/components/components.dart';
 import 'package:fresh_food/style/myText.dart';
 import 'package:fresh_food/style/my_colors.dart';
@@ -43,7 +44,10 @@ class ProductScreen extends StatelessWidget {
               ),
               defaultElevatedButton(
                   buttonText: "Add to the cart",
-                  onPressed: () {},
+                  onPressed: () {
+                    ShopCubit.get(context).addToCart(model, context);
+                    ShopCubit.get(context).getCartTotalPrice();
+                  },
                   textSize: 18,
                   iconData: Icons.add_shopping_cart),
               SizedBox(

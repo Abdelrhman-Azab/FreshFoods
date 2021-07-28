@@ -20,6 +20,7 @@ class ShopCubit extends Cubit<ShopStates> {
   double totalPrice = 0;
 
   getProducts() async {
+    products.clear();
     emit(ShopStateLoading());
     await FirebaseFirestore.instance
         .collection("products")

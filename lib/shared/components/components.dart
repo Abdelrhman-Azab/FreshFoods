@@ -195,7 +195,7 @@ Widget tabContainer(
         decoration: BoxDecoration(
             color: color, borderRadius: BorderRadius.circular(20)),
         height: 50,
-        width: size.width * 0.2,
+        width: size.width * 0.21,
       ),
     );
 

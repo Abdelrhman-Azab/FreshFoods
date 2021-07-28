@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fresh_food/cubit/cubit.dart';
 import 'package:fresh_food/screens/login/login_screen.dart';
+import 'package:fresh_food/screens/order/order_screen.dart';
 import 'package:fresh_food/screens/settings/cubit/cubit.dart';
 import 'package:fresh_food/screens/settings/cubit/states.dart';
 import 'package:fresh_food/shared/components/components.dart';
@@ -71,7 +72,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           context: context,
                           text: 'Your Orders',
                           icon: Icons.library_books,
-                          onTap: () {}),
+                          onTap: () {
+                            Navigator.of(context).pushNamed(OrderScreen.id);
+                          }),
                       Container(
                         padding:
                             EdgeInsets.symmetric(horizontal: 15, vertical: 10),

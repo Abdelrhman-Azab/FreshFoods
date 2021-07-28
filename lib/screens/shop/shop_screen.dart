@@ -12,6 +12,7 @@ class ShopScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -28,7 +29,6 @@ class ShopScreen extends StatelessWidget {
                 )
               : Container(
                   padding: EdgeInsets.all(10),
-                  //color: Colors.grey[100],
                   child: GridView.count(
                     mainAxisSpacing: 5,
                     crossAxisSpacing: 5,
@@ -55,8 +55,8 @@ class ShopScreen extends StatelessWidget {
                                               .products[index]
                                               .photoLink ??
                                           "",
-                                      width: 100,
-                                      height: 100,
+                                      width: size.width * 0.22,
+                                      height: size.width * 0.22,
                                     ),
                                     Text(ShopCubit.get(context)
                                             .products[index]
