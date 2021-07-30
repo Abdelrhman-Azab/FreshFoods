@@ -130,7 +130,6 @@ class DeliveryCubit extends Cubit<DeliveryStates> {
           .doc(uid)
           .set({"cart": []}).then((value) {
         ShopCubit.get(context).cartItems.clear();
-        OrderCubit.get(context).getOrders();
 
         emit(DeliveryStateOrderSuccess());
       });

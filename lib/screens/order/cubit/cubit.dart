@@ -17,9 +17,14 @@ class OrderCubit extends Cubit<OrderStates> {
     emit(OrderStateExpanded());
   }
 
-  getOrders() {
+  clearOrders() {
     orders.clear();
+    emit(OrderStateClear());
+  }
+
+  getOrders() {
     emit(OrderStateLoading());
+    orders.clear();
     FirebaseFirestore.instance
         .collection("orders")
         .doc(uid)

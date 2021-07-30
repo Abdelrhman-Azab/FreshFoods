@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_food/screens/product/product_screen.dart';
 import 'package:fresh_food/screens/shop/cubit/cubit.dart';
-import 'package:fresh_food/style/myText.dart';
-import 'package:fresh_food/style/my_colors.dart';
 
 class HomeScreen extends StatefulWidget {
   static const id = "home";

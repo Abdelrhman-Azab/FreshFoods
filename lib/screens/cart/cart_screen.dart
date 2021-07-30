@@ -200,13 +200,15 @@ class _CartScreenState extends State<CartScreen> {
               ),
               AnimatedContainer(
                 duration: Duration(milliseconds: 200),
-                width: 70,
                 child: Text(
                   "${cartItem.price! * cartItem.quantity!.toDouble()} LE",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: bold16,
                 ),
+              ),
+              SizedBox(
+                width: 10,
               ),
               GestureDetector(
                 onTap: () {

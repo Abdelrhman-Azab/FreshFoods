@@ -8,4 +8,6 @@ class OrderStateSuccess extends OrderStates {}
 
 class OrderStateFailed extends OrderStates {}
 
+class OrderStateClear extends OrderStates {}
+
 class OrderStateExpanded extends OrderStates {}

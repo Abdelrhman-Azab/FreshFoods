@@ -60,8 +60,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (BuildContext context) => LoginCubit()),
         BlocProvider(create: (BuildContext context) => SettingsCubit()),
         BlocProvider(create: (BuildContext context) => DeliveryCubit()),
-        BlocProvider(
-            create: (BuildContext context) => OrderCubit()..getOrders()),
         BlocProvider(create: (BuildContext context) => CartCubit()),
         BlocProvider(
             create: (BuildContext context) => ShopCubit()..getProducts()),
