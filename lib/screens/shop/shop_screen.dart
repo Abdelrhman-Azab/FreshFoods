@@ -6,6 +6,7 @@ import 'package:fresh_food/screens/product/product_screen.dart';
 import 'package:fresh_food/screens/shop/cubit/cubit.dart';
 import 'package:fresh_food/screens/shop/cubit/states.dart';
 import 'package:fresh_food/style/myText.dart';
+import 'package:fresh_food/style/my_colors.dart';
 
 class ShopScreen extends StatelessWidget {
   static const id = "shop";
@@ -14,11 +15,45 @@ class ShopScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            "Shop",
-            style: bold20,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(120),
+          child: Container(
+            height: 100,
+            decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 10,
+                      color: Colors.black12,
+                      offset: Offset(0.7, 0.7))
+                ],
+                color: MainCubit.get(context).dark
+                    ? Theme.of(context).primaryColor
+                    : Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                )),
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: onBoardColor,
+                      )),
+                ),
+                Center(
+                  child: Text(
+                    "Shop",
+                    style: bold20,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         body: BlocConsumer<ShopCubit, ShopStates>(
