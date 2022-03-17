@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fresh_food/cubit/cubit.dart';
+import 'package:fresh_food/main_cubit/cubit.dart';
 import 'package:fresh_food/screens/login/login_screen.dart';
 import 'package:fresh_food/screens/order/cubit/cubit.dart';
 import 'package:fresh_food/screens/order/order_screen.dart';
@@ -10,8 +10,7 @@ import 'package:fresh_food/screens/settings/cubit/cubit.dart';
 import 'package:fresh_food/screens/settings/cubit/states.dart';
 import 'package:fresh_food/screens/shop/cubit/cubit.dart';
 import 'package:fresh_food/shared/components/components.dart';
-import 'package:fresh_food/style/myText.dart';
-import 'package:fresh_food/style/my_colors.dart';
+import 'package:fresh_food/shared/style/myText.dart';
 
 class SettingsScreen extends StatefulWidget {
   static const id = "settings";

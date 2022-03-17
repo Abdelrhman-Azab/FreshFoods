@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fresh_food/cubit/cubit.dart';
+import 'package:fresh_food/main_cubit/cubit.dart';
 import 'package:fresh_food/screens/order/cubit/cubit.dart';
 import 'package:fresh_food/screens/order/cubit/states.dart';
-import 'package:fresh_food/style/myText.dart';
-import 'package:fresh_food/style/my_colors.dart';
+import 'package:fresh_food/shared/style/myText.dart';
+import 'package:fresh_food/shared/style/my_colors.dart';
 
 class OrderScreen extends StatefulWidget {
   static const id = "orders";

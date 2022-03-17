@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_food/cubit/cubit.dart';
-import 'package:fresh_food/style/myText.dart';
+import 'package:fresh_food/main_cubit/cubit.dart';
+import 'package:fresh_food/shared/style/myText.dart';
 
 class AccountScreen extends StatelessWidget {
   @override

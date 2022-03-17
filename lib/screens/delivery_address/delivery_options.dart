@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_food/screens/delivery_address/cubit/cubit.dart';
-import 'package:fresh_food/style/myText.dart';
-import 'package:fresh_food/style/my_colors.dart';
+import 'package:fresh_food/shared/style/myText.dart';
+import 'package:fresh_food/shared/style/my_colors.dart';
 
 deliveryOptions({
   required Size size,

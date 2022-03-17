@@ -3,7 +3,7 @@ import 'package:fresh_food/models/cart_model.dart';
 import 'package:fresh_food/screens/cart/cubit/cubit.dart';
 import 'package:fresh_food/screens/delivery_address/cubit/cubit.dart';
 import 'package:fresh_food/screens/shop/cubit/cubit.dart';
-import 'package:fresh_food/style/myText.dart';
+import 'package:fresh_food/shared/style/myText.dart';
 
 deliverySummary(
         {required Size size,

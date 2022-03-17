@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fresh_food/cubit/states.dart';
+import 'package:fresh_food/main_cubit/cubit.dart';
+import 'package:fresh_food/main_cubit/states.dart';
 import 'package:fresh_food/shared/network/local/preferences_service.dart';
 
 class MainCubit extends Cubit<MainStates> {

@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fresh_food/cubit/cubit.dart';
-import 'package:fresh_food/cubit/states.dart';
+import 'package:fresh_food/main_cubit/cubit.dart';
+import 'package:fresh_food/main_cubit/states.dart';
 import 'package:fresh_food/screens/cart/cubit/cubit.dart';
 import 'package:fresh_food/screens/delivery_address/cubit/cubit.dart';
 import 'package:fresh_food/screens/delivery_address/delivery_address_screen.dart';
@@ -22,11 +22,11 @@ import 'package:fresh_food/screens/shop/shop_screen.dart';
 import 'package:fresh_food/screens/signup/cubit/cubit.dart';
 import 'package:fresh_food/screens/signup/signup_screen.dart';
 import 'package:fresh_food/screens/tab_bar/tab_bar_screen.dart';
+import 'package:fresh_food/shared/bloc_observer/bloc_observer.dart';
 import 'package:fresh_food/shared/network/local/preferences_service.dart';
 import 'package:fresh_food/shared/network/remote/dio.dart';
-import 'package:fresh_food/style/myText.dart';
-import 'package:fresh_food/style/my_colors.dart';
-import 'bloc/bloc_observer.dart';
+import 'package:fresh_food/shared/style/myText.dart';
+import 'package:fresh_food/shared/style/my_colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

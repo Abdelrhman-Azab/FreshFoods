@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_food/screens/tab_bar/tab_bar_screen.dart';
 import 'package:fresh_food/shared/components/components.dart';
-import 'package:fresh_food/style/myText.dart';
+import 'package:fresh_food/shared/style/myText.dart';
 
 class OrderSuccessScreen extends StatelessWidget {
   static const id = "ordersuccess";

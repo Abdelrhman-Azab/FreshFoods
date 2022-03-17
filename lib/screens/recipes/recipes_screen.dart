@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fresh_food/cubit/cubit.dart';
+import 'package:fresh_food/main_cubit/cubit.dart';
 import 'package:fresh_food/models/meal_model.dart';
 import 'package:fresh_food/screens/meal_details/meal_details_screen.dart';
 import 'package:fresh_food/screens/recipes/cubit/cubit.dart';
 import 'package:fresh_food/screens/recipes/cubit/states.dart';
 import 'package:fresh_food/shared/components/components.dart';
-import 'package:fresh_food/style/myText.dart';
-import 'package:fresh_food/style/my_colors.dart';
+import 'package:fresh_food/shared/style/myText.dart';
+import 'package:fresh_food/shared/style/my_colors.dart';
 
 class RecipesScreen extends StatefulWidget {
   @override

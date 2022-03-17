@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_food/screens/tab_bar/tab_bar_screen.dart';
 import 'package:fresh_food/shared/components/components.dart';
-import 'package:fresh_food/style/my_colors.dart';
+import 'package:fresh_food/shared/style/my_colors.dart';
 
 class IntroductionScreen extends StatefulWidget {
   static const String id = "introduction";

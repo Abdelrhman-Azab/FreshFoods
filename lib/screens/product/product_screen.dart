@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_food/cubit/cubit.dart';
+import 'package:fresh_food/main_cubit/cubit.dart';
 import 'package:fresh_food/models/product.dart';
 import 'package:fresh_food/screens/shop/cubit/cubit.dart';
 import 'package:fresh_food/shared/components/components.dart';
-import 'package:fresh_food/style/myText.dart';
-import 'package:fresh_food/style/my_colors.dart';
+import 'package:fresh_food/shared/style/myText.dart';
+import 'package:fresh_food/shared/style/my_colors.dart';
 
 class ProductScreen extends StatelessWidget {
   static const id = "product";
